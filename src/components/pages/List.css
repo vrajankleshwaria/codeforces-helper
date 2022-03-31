@@ -1,0 +1,65 @@
+.margin {
+  margin: 2rem 25rem 2rem 5rem;
+}
+
+.app {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: flex;
+}
+
+.input {
+  border-color: #0b66c2;
+  border-radius: 0.5rem;
+  position: relative;
+  width: 55%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 0.7rem;
+  display: flex;
+}
+
+.input:focus {
+  box-shadow: 0 0 5px 5px #87aacd;
+  border-color: #0b66c2;
+}
+
+.margin1 {
+  text-align: center;
+  width: 3rem;
+}
+
+.paginationBttns {
+  width: 80%;
+  height: 40px;
+  margin-top: 2rem;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #2b2eff;
+  color: #2b2eff;
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: white;
+  background-color: #2b2eff;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: #2b2eff;
+}
+
+.paginationDisabled a {
+  color: grey;
+  background-color: grey;
+}

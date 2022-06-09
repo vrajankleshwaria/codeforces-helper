@@ -1,5 +1,5 @@
 import nameUIComponent from "./NameUIComponent";
-import ratingAccessor from "../commonAccessor/RatingAccessor";
+import ratingAccessor from "../accessor/ratingAccessor";
 
 const column = [
   { header: "Name", component: nameUIComponent },

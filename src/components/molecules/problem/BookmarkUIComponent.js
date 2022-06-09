@@ -18,28 +18,22 @@ const BookmarkUIComponent = (data) => {
     dispatch(getBookmarks());
   }, []);
 
-  const addBookMarkHandler = (bookmark) => {
-    dispatch(addBookmark(bookmark));
+  const addBookMarkHandler = () => {
+    dispatch(addBookmark(problemId));
     dispatch(getBookmarks());
   };
 
-  const deleteBookmarkHandler = (bookmark) => {
-    dispatch(deleteBookmark(bookmark));
+  const deleteBookmarkHandler = () => {
+    dispatch(deleteBookmark(problemId));
     dispatch(getBookmarks());
   };
 
   return (
-    <td className="margin1" key={index}>
+    <td className="bookmarkIcon" key={index}>
       {bookmarks !== undefined && bookmarks.includes(problemId) ? (
-        <FaBookmark
-          color="blue"
-          onClick={() => deleteBookmarkHandler(problemId)}
-        />
+        <FaBookmark color="blue" onClick={deleteBookmarkHandler} />
       ) : (
-        <FaRegBookmark
-          color="blue"
-          onClick={() => addBookMarkHandler(problemId)}
-        />
+        <FaRegBookmark color="blue" onClick={addBookMarkHandler} />
       )}
     </td>
   );

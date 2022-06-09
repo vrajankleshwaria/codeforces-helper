@@ -1,10 +1,10 @@
 import React from "react";
-import "./style.css";
-import Row from "./Row.js";
+import "./table.css";
+import Row from "../Row";
 import _ from "lodash";
 
 const Table = (props) => {
-  const tableHeading = (
+  const heading = (
     <tr key={-1}>
       {_.map(props.column, (headingData, index) => {
         return <th key={index}>{headingData.header}</th>;
@@ -12,15 +12,15 @@ const Table = (props) => {
     </tr>
   );
 
-  const tableRows = _.map(props.tableData, (row, index) => {
+  const rows = _.map(props.tableData, (row, index) => {
     return <Row key={index} row={row} columns={props.column} />;
   });
 
   return (
     <table>
       <tbody>
-        {tableHeading}
-        {tableRows}
+        {heading}
+        {rows}
       </tbody>
     </table>
   );

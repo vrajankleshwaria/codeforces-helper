@@ -1,74 +1,62 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./NavBar.css";
-import cf from "../../assets/images/cf.jpg";
+import "./navbar.css";
 
 function NavBar() {
   const [click, setClick] = useState(false);
-
   const handleClick = () => setClick(!click);
 
   return (
     <>
       <nav className="navbar">
-        <NavLink exact="true" to="/" className="nav-logo">
+        <NavLink exact="true" to="/" className="navbarLogo">
           Codeforces Helper
-          <img src={cf} alt="CF" className="nav-image" />
+          <img src="/images/cf.jpg" alt="CF" className="navbarImage" />
         </NavLink>
 
-        <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
+        <ul className={click ? "navbarMenu active" : "navbarMenu"}>
+          <li className="navbarItem">
             <NavLink
               exact="true"
               to="/"
-              className="nav-links"
+              className="navbarLinks"
               onClick={handleClick}
             >
               Home
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="navbarItem">
             <NavLink
               exact="true"
               to="/UpcomingContest"
-              className="nav-links"
+              className="navbarLinks"
               onClick={handleClick}
             >
               Upcoming Contest
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="navbarItem">
             <NavLink
               exact="true"
               to="/UpSolve"
-              className="nav-links"
+              className="navbarLinks"
               onClick={handleClick}
             >
               UpSolve
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="navbarItem">
             <NavLink
               exact="true"
               to="/Problems"
-              className="nav-links"
+              className="navbarLinks"
               onClick={handleClick}
             >
               Problems
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink
-              exact="true"
-              to="/Friends"
-              className="nav-links"
-              onClick={handleClick}
-            >
-              Friends
-            </NavLink>
-          </li>
         </ul>
-        <div className="nav-icon" onClick={handleClick}>
+        <div className="navbarIcon" onClick={handleClick}>
           <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
         </div>
       </nav>

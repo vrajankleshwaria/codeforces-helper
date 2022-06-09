@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import fetchData from "../../common/fetchData";
+import fetchData from "../../helper/fetchData";
 import _ from "lodash";
 
 const useGetIdToContestName = () => {

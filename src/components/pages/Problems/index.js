@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { GridLoader } from "react-spinners";
-import Table from "../organisms/showList/Table";
-import "./List.css";
+import Table from "../../organisms/Table";
+import "../style.css";
 import ReactPaginate from "react-paginate";
-import Column from "../molecules/problem/UseColumn";
-import useGetAllProblemData from "../../hooks/useGetAllProblemData";
+import Column from "../../molecules/problem/Column";
+import useGetAllProblems from "../../hooks/useGetAllProblems";
 import { useBetween } from "use-between";
-import Store from "../molecules/problem/Store";
-import { displayProblems } from "../molecules/problem/displayProblems";
-import SearchByName from "../molecules/problem/SearchByName";
+import useGetBookmarks from "../../hooks/useGetFilteredProblems";
+import { displayProblems } from "../../helper/displayProblems";
+import SearchByName from "../../helper/SearchByName";
+import Loader from "../../molecules/loader";
 
 export const Problems = () => {
   const { column } = useBetween(Column);
-  const { filteredProblems, setFilteredProblems } = useBetween(Store);
-  const { problems } = useGetAllProblemData();
+  const { filteredProblems, setFilteredProblems } = useBetween(useGetBookmarks);
+  const { problems } = useGetAllProblems();
   const [pageNumber, setPageNumber] = useState(0);
   const problemsPerPage = 14;
   const pagesVisited = pageNumber * problemsPerPage;
@@ -27,17 +27,15 @@ export const Problems = () => {
   };
 
   return problems === undefined || filteredProblems === undefined ? (
-    <div className="app">
-      <GridLoader color="#0b66c2" />
-    </div>
+    <Loader />
   ) : (
-    <div className="margin">
+    <div className="tableWrapper">
       <input
         className="input"
         placeholder="Search Problem Name"
         onChange={(e) => {
-          const { tempFilteredProblems } = SearchByName(e, problems);
-          setFilteredProblems(tempFilteredProblems);
+          const { filteredProblemsByName } = SearchByName(e, problems);
+          setFilteredProblems(filteredProblemsByName);
         }}
       />
 
@@ -49,6 +47,7 @@ export const Problems = () => {
         )}
         column={column}
       />
+
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}

@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import fetchData from "../common/fetchData";
+import fetchData from "../helper/fetchData";
 import _ from "lodash";
 
-const useGetContestData = (contestStatus) => {
+const useGetAllContests = (contestStatus) => {
   const [contest, setContests] = useState();
-  const [filterContest, setFilterContest] = useState([]);
+  const [filteredContest, setFilteredContest] = useState([]);
 
   function ConvertToHours(seconds) {
     return (seconds / 3600).toString() + " Hours";
   }
 
-  function tp(startTimeSeconds) {
-    let date = new Intl.DateTimeFormat("en-US", {
+  function getDate(startTimeSeconds) {
+    const date = new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
@@ -30,8 +30,8 @@ const useGetContestData = (contestStatus) => {
 
   useEffect(() => {
     if (contest !== undefined) {
-      let tempContest = [];
-      let keys = ["id", "name", "type", "durationSeconds", "startTime"];
+      let filterContest = [];
+      const keys = ["id", "name", "type", "durationSeconds", "startTime"];
       _.map(contest.data.result, (contest) => {
         if (contest.phase === contestStatus) {
           let object = {};
@@ -39,16 +39,16 @@ const useGetContestData = (contestStatus) => {
           object[keys[1]] = contest.name;
           object[keys[2]] = contest.type;
           object[keys[3]] = ConvertToHours(contest.durationSeconds);
-          object[keys[4]] = tp(contest.startTimeSeconds);
-          tempContest.push(object);
+          object[keys[4]] = getDate(contest.startTimeSeconds);
+          filterContest.push(object);
         }
       });
 
-      setFilterContest(tempContest);
+      setFilteredContest(filterContest);
     }
   }, [contest]);
 
-  return { filterContest };
+  return { filteredContest };
 };
 
-export default useGetContestData;
+export default useGetAllContests;

@@ -1,13 +1,5 @@
-.margin {
+.tableWrapper {
   margin: 2rem 25rem 2rem 5rem;
-}
-
-.app {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  display: flex;
 }
 
 .input {
@@ -26,7 +18,7 @@
   border-color: #0b66c2;
 }
 
-.margin1 {
+.bookmarkIcon {
   text-align: center;
   width: 3rem;
 }

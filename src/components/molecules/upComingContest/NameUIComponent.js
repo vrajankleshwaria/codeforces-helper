@@ -8,7 +8,9 @@ const nameUIComponent = (props) => {
       <div>
         <b>{name}</b>
       </div>
-      <a href="https://codeforces.com/contests">Register</a>
+      <a target="_blank" href="https://codeforces.com/contests">
+        Register
+      </a>
     </td>
   );
 };

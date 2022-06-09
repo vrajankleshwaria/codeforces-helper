@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./row.css";
 import _ from "lodash";
 
 const Row = (props) => {

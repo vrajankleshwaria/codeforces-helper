@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import fetchData from "../common/fetchData";
+import fetchData from "../helper/fetchData";
 import _ from "lodash";
 
-const useGetProblemData = (id) => {
+const useGetContestProblems = (id) => {
   const [data, setData] = useState();
   const [problemList, setProblemList] = useState();
 
@@ -16,21 +16,21 @@ const useGetProblemData = (id) => {
 
   useEffect(() => {
     if (data !== undefined) {
-      let tempProblemList = [];
-      let keys = ["id", "name", "rating", "contestId"];
+      let filterProblemList = [];
+      const keys = ["id", "name", "rating", "contestId"];
       _.map(data.data.result.problems, (curProblem) => {
         let object = {};
         object[keys[0]] = curProblem.index;
         object[keys[1]] = curProblem.name;
         object[keys[2]] = curProblem.rating ?? "-";
         object[keys[3]] = curProblem.contestId;
-        tempProblemList.push(object);
+        filterProblemList.push(object);
       });
-      setProblemList(tempProblemList);
+      setProblemList(filterProblemList);
     }
   }, [data]);
 
   return { problemList };
 };
 
-export default useGetProblemData;
+export default useGetContestProblems;

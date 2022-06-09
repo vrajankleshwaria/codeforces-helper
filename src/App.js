@@ -1,12 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./components/pages/Home";
-import { UpcomingContestList } from "./components/pages/UpcomingContestList";
+import { UpcomingContests } from "./components/pages/UpcomingContests";
 import { Problems } from "./components/pages/Problems";
-import { UpSolveContestList } from "./components/pages/UpSolveContestList";
-import { Friends } from "./components/pages/Friends";
-import ContestProblemList from "./components/pages/ContestProblemList";
-import AppSkeleton from "./AppSkeleton/AppSkeleton";
+import { UpSolveContests } from "./components/pages/UpSolveContests";
+import ContestProblems from "./components/pages/ContestProblems";
+import AppSkeleton from "./components/AppSkeleton";
 
 function App() {
   return (
@@ -15,11 +14,10 @@ function App() {
         <AppSkeleton>
           <Routes>
             <Route exact="true" path="/" element={<Home />} />
-            <Route path="/UpcomingContest" element={<UpcomingContestList />} />
-            <Route path="/upSolve" element={<UpSolveContestList />} />
-            <Route path="/upSolve/:id" element={<ContestProblemList />} />
+            <Route path="/UpcomingContest" element={<UpcomingContests />} />
+            <Route path="/upSolve" element={<UpSolveContests />} />
+            <Route path="/upSolve/:id" element={<ContestProblems />} />
             <Route path="/problems" element={<Problems />} />
-            <Route path="/friends" element={<Friends />} />
           </Routes>
         </AppSkeleton>
       </Router>

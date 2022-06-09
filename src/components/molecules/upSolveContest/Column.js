@@ -1,7 +1,7 @@
 import nameUIComponent from "./NameUIComponent";
-import typeAccessor from "../commonAccessor/TypeAccessor";
-import durationAccessor from "../commonAccessor/DurationAccessor";
-import startsAccessor from "../commonAccessor/StartsAccessor";
+import typeAccessor from "../accessor/typeAccessor";
+import durationAccessor from "../accessor/durationAccessor";
+import startsAccessor from "../accessor/startTimeAccessor";
 
 const column = [
   { header: "Name", component: nameUIComponent },
@@ -11,5 +11,3 @@ const column = [
 ];
 
 export default column;
-
-// props

@@ -1,11 +1,17 @@
 import React from "react";
-import onclick from "./Onclick";
 
 const nameUIComponent = (props) => {
   const { row, index } = props;
-  const { id, name } = row;
+  const { id, contestId, name } = row;
+
+  const showProblem = () => {
+    return window.open(
+      `https://codeforces.com/contest/${contestId}/problem/${id}`
+    );
+  };
+
   return (
-    <td onClick={() => onclick(row)} key={index}>
+    <td onClick={showProblem} key={index}>
       <b>
         {id}. {name}
       </b>
